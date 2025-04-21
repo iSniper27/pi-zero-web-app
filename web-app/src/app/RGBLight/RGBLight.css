@@ -1,0 +1,14 @@
+.slidersContainer {
+    display: inline-block;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 300px;
+    height: 100px;
+}
+
+.RGBvisualizer {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    outline: 1px white solid;
+}

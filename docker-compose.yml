@@ -1,0 +1,42 @@
+services:
+  web-app:
+    build: ./web-app
+    expose:
+      - "3000"
+    depends_on:
+      - server
+      - nginx-proxy
+
+  server:
+    build: ./server
+    expose:
+      - "3001"
+    env_file:
+      - ./server/.env.production
+
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:latest
+    network_mode: host
+    restart: always
+    user: "1000:1000"
+    read_only: true
+    cap_drop: [ all ]
+    environment:
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+      - DOMAINS=${DOMAIN}
+      - IP6_PROVIDER=none
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/logs
+
+  nginx-proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt

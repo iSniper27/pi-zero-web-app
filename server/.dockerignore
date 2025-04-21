@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Git and version control
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Editor configs
+.vscode/
+.idea/
+*.swp
+
+# Tests and dev-only files
+*.test.*
+*.spec.*
+coverage/
+__tests__/
+
+# OS junk
+.DS_Store
+Thumbs.db
