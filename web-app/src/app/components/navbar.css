@@ -1,0 +1,9 @@
+.MuiAppBar-root.navbar {
+    background-color: #1a1a1a;
+}
+
+.MuiButton-root.navButtons {
+    color: white;
+    margin-left: 5px;
+    font-family: 'arial';
+}
